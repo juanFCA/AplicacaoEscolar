@@ -5,7 +5,14 @@
  */
 package view;
 
+import controle.AlunoControle;
+import controle.TurmaControle;
+import dominio.Turma;
 import java.awt.Dimension;
+import java.util.List;
+import javassist.tools.rmi.RemoteException;
+import javax.swing.JOptionPane;
+import util.ValidacaoException;
 
 /**
  *
@@ -13,10 +20,14 @@ import java.awt.Dimension;
  */
 public class AlunoCadForm extends javax.swing.JInternalFrame {
 
+    private final AlunoControle alunoControle;
+    private final TurmaControle turmaControle;
     /**
      * Creates new form AlunoCadForm
      */
     public AlunoCadForm() {
+        alunoControle = new AlunoControle();
+        turmaControle = new TurmaControle();
         initComponents();
     }
     
@@ -25,6 +36,14 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
     }
 
+    public AlunoControle getAlunoControle() {
+        return alunoControle;
+    }
+
+    public TurmaControle getTurmaControle() {
+        return turmaControle;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,6 +52,7 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         btnGroupPCD = new javax.swing.ButtonGroup();
         panelMenu = new javax.swing.JPanel();
@@ -59,21 +79,58 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setTitle("Cadastro de Alunos");
         setToolTipText("Tela para cadastro, atualização, remoção e pesquisa de Alunos do Sistema Escola DJJL");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         panelMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnNovo.setMnemonic('n');
         btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setMnemonic('s');
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnRemover.setMnemonic('r');
         btnRemover.setText("Remover");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
 
         btnPesquisar.setMnemonic('p');
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.setToolTipText("");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
@@ -114,14 +171,32 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
 
         txtMatricula.setEditable(false);
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.id}"), txtMatricula, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.anoNasc}"), txtAnoNasc, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.nome}"), txtNome, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.nome}"), cbTurma, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
         panelPCD.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "PCD"));
         panelPCD.setName(""); // NOI18N
 
         btnGroupPCD.add(rBtnSim);
         rBtnSim.setText("Sim");
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.PCD}"), rBtnSim, org.jdesktop.beansbinding.BeanProperty.create("selected"));
+        bindingGroup.addBinding(binding);
+
         btnGroupPCD.add(rBtnNao);
         rBtnNao.setText("Não");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.PCD}"), rBtnNao, org.jdesktop.beansbinding.BeanProperty.create("selected"));
+        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout panelPCDLayout = new javax.swing.GroupLayout(panelPCD);
         panelPCD.setLayout(panelPCDLayout);
@@ -196,14 +271,34 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
 
         panelScroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        tabelaAlunos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        tabelaAlunos.getTableHeader().setReorderingAllowed(false);
 
-            },
-            new String [] {
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunosTabelas}");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, eLProperty, tabelaAlunos);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
+        columnBinding.setColumnName("Matrícula");
+        columnBinding.setColumnClass(Long.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
+        columnBinding.setColumnName("Nome");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${anoNasc}"));
+        columnBinding.setColumnName("Ano Nasc");
+        columnBinding.setColumnClass(Long.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${PCD}"));
+        columnBinding.setColumnName("PCD");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${turma}"));
+        columnBinding.setColumnName("Turma");
+        columnBinding.setColumnClass(dominio.Turma.class);
+        columnBinding.setEditable(false);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoSelecionado}"), tabelaAlunos, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        bindingGroup.addBinding(binding);
 
-            }
-        ));
         panelScroll.setViewportView(tabelaAlunos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -224,8 +319,87 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
                 .addComponent(panelScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE))
         );
 
+        bindingGroup.bind();
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        // TODO add your handling code here:
+        alunoControle.novo();
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        try {
+            List<Turma> lista = turmaControle.getTurmasTabelas();
+            lista.stream().filter((tur) -> (tur.getNome() == null ? cbTurma.getSelectedItem().toString() == null : tur.getNome().equals(cbTurma.getSelectedItem().toString()))).forEach((tur) -> {
+                alunoControle.getAlunoDigitado().setTurma(tur);
+            });
+            alunoControle.salvar();
+            JOptionPane.showMessageDialog(this, 
+                "Aluno salvo com sucesso",
+                "Salvar Aluno",
+                JOptionPane.INFORMATION_MESSAGE);              
+        } catch(ValidacaoException e) {
+            JOptionPane.showMessageDialog(this, 
+                e.getMessage(),
+                "Falha de Validação",
+                JOptionPane.WARNING_MESSAGE);              
+        } catch(RemoteException e ){
+            JOptionPane.showMessageDialog(this,
+                    "Erro "+e.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        } 
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(this, 
+                "Deseja realmente remover este Aluno?",
+                "Remover Aluno",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            
+            try {
+                alunoControle.remover();
+                JOptionPane.showMessageDialog(this, 
+                    "Aluno removido com sucesso",
+                    "Remover Aluno",
+                    JOptionPane.INFORMATION_MESSAGE);              
+            } catch(RemoteException e ){
+                JOptionPane.showMessageDialog(this,
+                    "Erro "+e.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+            }        
+        }
+    }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+        try {
+            alunoControle.pesquisar();
+        } catch(RemoteException e ){
+            JOptionPane.showMessageDialog(this,
+                    "Erro "+e.getMessage(),
+                    "Erro",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        // TODO add your handling code here:
+        cbTurma.addItem("Selecione uma Turma");
+        try {
+            List<Turma> lista = turmaControle.getTurmasTabelas();
+            lista.stream().forEach((tur) -> {
+                cbTurma.addItem(tur.getNome());
+            });
+        } catch(Exception erro) {
+            System.out.println(erro);
+        }
+    }//GEN-LAST:event_formInternalFrameOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -249,5 +423,6 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtAnoNasc;
     private javax.swing.JTextField txtMatricula;
     private javax.swing.JTextField txtNome;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
