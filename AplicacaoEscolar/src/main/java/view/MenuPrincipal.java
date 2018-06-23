@@ -39,6 +39,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnTurma = new javax.swing.JMenu();
         mnCadTurma = new javax.swing.JMenuItem();
+        mniListaTurmaOO = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Escolar DJJL");
@@ -85,6 +86,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnOperacao.add(mnAluno);
         mnOperacao.add(jSeparator1);
 
+        mnTurma.setMnemonic('t');
         mnTurma.setText("Turma");
 
         mnCadTurma.setMnemonic('c');
@@ -95,6 +97,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         mnTurma.add(mnCadTurma);
+
+        mniListaTurmaOO.setMnemonic('l');
+        mniListaTurmaOO.setText("Listagem de Turmas");
+        mniListaTurmaOO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaTurmaOOActionPerformed(evt);
+            }
+        });
+        mnTurma.add(mniListaTurmaOO);
 
         mnOperacao.add(mnTurma);
 
@@ -139,11 +150,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void mniListaAluTurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaAluTurActionPerformed
         // TODO add your handling code here:
-        AlunoListaTurmaForm alunoListaTurmaForm = new AlunoListaTurmaForm();
-        panelDesktop.add(alunoListaTurmaForm);
-        alunoListaTurmaForm.Centralizar();
-        alunoListaTurmaForm.setVisible(true);
+        AlunoListaForm alunoListaForm = new AlunoListaForm();
+        panelDesktop.add(alunoListaForm);
+        alunoListaForm.Centralizar();
+        alunoListaForm.setVisible(true);
     }//GEN-LAST:event_mniListaAluTurActionPerformed
+
+    private void mniListaTurmaOOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaTurmaOOActionPerformed
+        // TODO add your handling code here:
+        TurmaListaForm turmaListaForm = new TurmaListaForm();
+        panelDesktop.add(turmaListaForm);
+        turmaListaForm.Centralizar();
+        turmaListaForm.setVisible(true);
+    }//GEN-LAST:event_mniListaTurmaOOActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +209,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mnTurma;
     private javax.swing.JMenuItem mniCadAluno;
     private javax.swing.JMenuItem mniListaAluTur;
+    private javax.swing.JMenuItem mniListaTurmaOO;
     private javax.swing.JMenuItem mniSair;
     private javax.swing.JDesktopPane panelDesktop;
     // End of variables declaration//GEN-END:variables

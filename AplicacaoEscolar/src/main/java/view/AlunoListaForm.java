@@ -15,13 +15,13 @@ import javax.swing.JOptionPane;
  *
  * @author juan
  */
-public class AlunoListaTurmaForm extends javax.swing.JInternalFrame {
+public class AlunoListaForm extends javax.swing.JInternalFrame {
 
     private RelatorioControle relatorioControle;
     /**
      * Creates new form AlunoListaTurmaForm
      */
-    public AlunoListaTurmaForm() {
+    public AlunoListaForm() {
         relatorioControle = new RelatorioControle();
         initComponents();
     }
@@ -59,6 +59,7 @@ public class AlunoListaTurmaForm extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
+        setTitle("Listagem de Alunos por Turma");
 
         panelMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -77,12 +78,13 @@ public class AlunoListaTurmaForm extends javax.swing.JInternalFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Ordenar tabela por:"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Ordenar Tabela por:"));
 
         btnGroupOrdem.add(rBtnMatricula);
         rBtnMatricula.setText("Matrícula");
 
         btnGroupOrdem.add(rBtnNome);
+        rBtnNome.setSelected(true);
         rBtnNome.setText("Nome");
 
         btnGroupOrdem.add(rBtnAnoNasc);

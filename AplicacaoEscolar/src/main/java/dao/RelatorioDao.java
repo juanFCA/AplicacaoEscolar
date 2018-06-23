@@ -7,7 +7,7 @@ package dao;
 
 import conexao.Conexao;
 import dominio.Aluno;
-import java.beans.PropertyChangeListener;
+import dominio.Turma;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -28,4 +28,14 @@ public class RelatorioDao {
         return em.createQuery("select a from Aluno a join a.turma t where t.nome like"+"'"+nomeTurma+"' order by a."+opcaoOrdem).getResultList();
     }
     
+    public List<Turma> listarTurmasOpcaoOrdem(String opcao, String ordem) {
+        switch (opcao) {
+            case "comPCD":
+                return em.createQuery("select t from Turma t join t.alunos a where a.PCD = "+1+" order by t."+ordem).getResultList();
+            case "semPCD":
+                return em.createQuery("select t from Turma t join t.alunos a where a.PCD = "+0+" order by t."+ordem).getResultList();
+            default:
+                return em.createQuery("select t from Turma t order by "+ordem).getResultList();
+        }
+    }
 }

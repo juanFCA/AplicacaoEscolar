@@ -57,6 +57,7 @@
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="mnTurma">
               <Properties>
+                <Property name="mnemonic" type="int" value="116"/>
                 <Property name="text" type="java.lang.String" value="Turma"/>
               </Properties>
               <SubComponents>
@@ -67,6 +68,15 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnCadTurmaActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mniListaTurmaOO">
+                  <Properties>
+                    <Property name="mnemonic" type="int" value="108"/>
+                    <Property name="text" type="java.lang.String" value="Listagem de Turmas"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniListaTurmaOOActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>

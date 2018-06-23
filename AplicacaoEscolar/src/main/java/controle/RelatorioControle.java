@@ -7,6 +7,7 @@ package controle;
 
 import dao.RelatorioDao;
 import dominio.Aluno;
+import dominio.Turma;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -26,17 +27,24 @@ public class RelatorioControle {
     
     private String nomeTurma;
     private List<Aluno> alunosTabelas;
+    private List<Turma> turmaTabelas;
     
     public RelatorioControle() {
         relatorioDao = new RelatorioDao();
         alunosTabelas = ObservableCollections.observableList(new ArrayList<>());
+        turmaTabelas = ObservableCollections.observableList(new ArrayList<>());
     }
     
     public final void listarAlunosTurma(String opcaoOrdem) {
-       alunosTabelas.clear();
-       alunosTabelas.addAll(relatorioDao.listarAlunosTurma(nomeTurma, opcaoOrdem));
+        alunosTabelas.clear();
+        alunosTabelas.addAll(relatorioDao.listarAlunosTurma(nomeTurma, opcaoOrdem));
     }
 
+    public final void listarTurmasOpcaoOrdem(String opcao, String ordem) {
+        turmaTabelas.clear();
+        turmaTabelas.addAll(relatorioDao.listarTurmasOpcaoOrdem(opcao, ordem));
+    }
+    
     public List<Aluno> getAlunosTabelas() {
         return alunosTabelas;
     }
@@ -51,6 +59,14 @@ public class RelatorioControle {
 
     public void setNomeTurma(String nomeTurma) {
         this.nomeTurma = nomeTurma;
+    }
+
+    public List<Turma> getTurmaTabelas() {
+        return turmaTabelas;
+    }
+
+    public void setTurmaTabelas(List<Turma> turmaTabelas) {
+        this.turmaTabelas = turmaTabelas;
     }
     
     public void addPropertyChangeListener(PropertyChangeListener e) {
