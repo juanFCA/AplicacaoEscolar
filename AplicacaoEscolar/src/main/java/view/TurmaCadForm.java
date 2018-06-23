@@ -50,7 +50,6 @@ public class TurmaCadForm extends javax.swing.JInternalFrame {
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
         panelDados = new javax.swing.JPanel();
         lblCódigo = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
@@ -113,15 +112,6 @@ public class TurmaCadForm extends javax.swing.JInternalFrame {
             }
         });
 
-        btnPesquisar.setMnemonic('p');
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.setToolTipText("");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
@@ -133,8 +123,6 @@ public class TurmaCadForm extends javax.swing.JInternalFrame {
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelMenuLayout.setVerticalGroup(
@@ -144,8 +132,7 @@ public class TurmaCadForm extends javax.swing.JInternalFrame {
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(btnSalvar)
-                    .addComponent(btnRemover)
-                    .addComponent(btnPesquisar))
+                    .addComponent(btnRemover))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -207,7 +194,7 @@ public class TurmaCadForm extends javax.swing.JInternalFrame {
                                 .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelDadosLayout.createSequentialGroup()
                                 .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                                 .addComponent(lblTotAlunos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtTotAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -337,18 +324,6 @@ public class TurmaCadForm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnRemoverActionPerformed
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
-        try {
-            turmaControle.pesquisar();
-        } catch(RemoteException e ){
-            JOptionPane.showMessageDialog(this,
-                    "Erro "+e.getMessage(),
-                    "Erro",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnPesquisarActionPerformed
-
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
         cbEnsino.addItem("Tipo de Ensino");
@@ -362,7 +337,6 @@ public class TurmaCadForm extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNovo;
-    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbEnsino;

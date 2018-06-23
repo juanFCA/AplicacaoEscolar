@@ -16,7 +16,11 @@ import javax.persistence.EntityManager;
  */
 public class AlunoDao {
     
-    EntityManager em = Conexao.getEntityManager();
+    private final EntityManager em;
+
+    public AlunoDao() {
+        this.em = Conexao.getEntityManager();
+    }
     
     public void salvarAtualizarAluno(Aluno aluno) { //deve informar a turma
         em.getTransaction().begin();
@@ -39,7 +43,7 @@ public class AlunoDao {
     }
 
     public List<Aluno> listaAlunos() {
-        return em.createQuery("select a from Aluno a").getResultList();
+        return em.createQuery("select a from Aluno a order by nome").getResultList();
     }
     
 }

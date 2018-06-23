@@ -6,10 +6,10 @@
 package dao;
 
 import conexao.Conexao;
+import dominio.Aluno;
 import dominio.Turma;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 /**
  *
@@ -17,7 +17,11 @@ import javax.persistence.Query;
  */
 public class TurmaDao {
     
-    EntityManager em = Conexao.getEntityManager();
+    private final EntityManager em;
+
+    public TurmaDao() {
+        this.em = Conexao.getEntityManager();
+    }
     
     public void salvarAtualizarTurma(Turma turma) { //deve informar a turma
         em.getTransaction().begin();
@@ -40,6 +44,6 @@ public class TurmaDao {
     }
 
     public List<Turma> listaTurmas() {
-        return em.createQuery("select t from Turma t").getResultList();
+        return em.createQuery("select t from Turma t ORDER BY id").getResultList();
     }
 }

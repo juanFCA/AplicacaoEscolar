@@ -35,6 +35,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnOperacao = new javax.swing.JMenu();
         mnAluno = new javax.swing.JMenu();
         mniCadAluno = new javax.swing.JMenuItem();
+        mniListaAluTur = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnTurma = new javax.swing.JMenu();
         mnCadTurma = new javax.swing.JMenuItem();
@@ -71,6 +72,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         mnAluno.add(mniCadAluno);
+
+        mniListaAluTur.setMnemonic('l');
+        mniListaAluTur.setText("Lista de Alunos por Turma");
+        mniListaAluTur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniListaAluTurActionPerformed(evt);
+            }
+        });
+        mnAluno.add(mniListaAluTur);
 
         mnOperacao.add(mnAluno);
         mnOperacao.add(jSeparator1);
@@ -127,6 +137,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         turmaCadForm.setVisible(true);
     }//GEN-LAST:event_mnCadTurmaActionPerformed
 
+    private void mniListaAluTurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniListaAluTurActionPerformed
+        // TODO add your handling code here:
+        AlunoListaTurmaForm alunoListaTurmaForm = new AlunoListaTurmaForm();
+        panelDesktop.add(alunoListaTurmaForm);
+        alunoListaTurmaForm.Centralizar();
+        alunoListaTurmaForm.setVisible(true);
+    }//GEN-LAST:event_mniListaAluTurActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -171,6 +189,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mnOperacao;
     private javax.swing.JMenu mnTurma;
     private javax.swing.JMenuItem mniCadAluno;
+    private javax.swing.JMenuItem mniListaAluTur;
     private javax.swing.JMenuItem mniSair;
     private javax.swing.JDesktopPane panelDesktop;
     // End of variables declaration//GEN-END:variables

@@ -59,7 +59,6 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
         panelDados = new javax.swing.JPanel();
         lblMatricula = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
@@ -123,15 +122,6 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
             }
         });
 
-        btnPesquisar.setMnemonic('p');
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.setToolTipText("");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelMenuLayout = new javax.swing.GroupLayout(panelMenu);
         panelMenu.setLayout(panelMenuLayout);
         panelMenuLayout.setHorizontalGroup(
@@ -143,8 +133,6 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelMenuLayout.setVerticalGroup(
@@ -154,8 +142,7 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
                 .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(btnSalvar)
-                    .addComponent(btnRemover)
-                    .addComponent(btnPesquisar))
+                    .addComponent(btnRemover))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -291,9 +278,9 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         columnBinding.setColumnName("PCD");
         columnBinding.setColumnClass(Integer.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${turma}"));
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${turma.nome}"));
         columnBinding.setColumnName("Turma");
-        columnBinding.setColumnClass(dominio.Turma.class);
+        columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoSelecionado}"), tabelaAlunos, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
@@ -326,6 +313,7 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
+        cbTurma.setSelectedIndex(0);
         alunoControle.novo();
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -352,6 +340,7 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
                     "Erro",
                     JOptionPane.ERROR_MESSAGE);
         } 
+        cbTurma.setSelectedIndex(0);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
@@ -374,19 +363,8 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
                     JOptionPane.ERROR_MESSAGE);
             }        
         }
+        cbTurma.setSelectedIndex(0);
     }//GEN-LAST:event_btnRemoverActionPerformed
-
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
-        try {
-            alunoControle.pesquisar();
-        } catch(RemoteException e ){
-            JOptionPane.showMessageDialog(this,
-                    "Erro "+e.getMessage(),
-                    "Erro",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
@@ -405,7 +383,6 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btnGroupPCD;
     private javax.swing.JButton btnNovo;
-    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbTurma;
