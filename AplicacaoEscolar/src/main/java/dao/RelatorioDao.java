@@ -32,8 +32,6 @@ public class RelatorioDao {
         switch (opcao) {
             case "comPCD":
                 return em.createQuery("select t from Turma t join t.alunos a where a.PCD = "+1+" order by t."+ordem).getResultList();
-            case "semPCD":
-                return em.createQuery("select t from Turma t join t.alunos a where a.PCD = "+0+" order by t."+ordem).getResultList();
             default:
                 return em.createQuery("select t from Turma t order by "+ordem).getResultList();
         }

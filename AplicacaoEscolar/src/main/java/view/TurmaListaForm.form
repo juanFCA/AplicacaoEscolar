@@ -57,10 +57,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="panelOpcao" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="panelOpcao" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="panelOrdem" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -77,7 +77,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="panelOpcao" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="panelOrdem" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -109,11 +109,11 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="rBtnTodasTurmas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="rBtnTurmasPCD" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rBtnTurmaSemPCD" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -122,7 +122,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="rBtnTodasTurmas" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rBtnTurmasPCD" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rBtnTurmaSemPCD" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -142,15 +141,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="btnGroupOpcao"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Com PCD"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="rBtnTurmaSemPCD">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="btnGroupOpcao"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Sem PCD"/>
+                <Property name="text" type="java.lang.String" value="Turmas com PCD"/>
               </Properties>
             </Component>
           </SubComponents>

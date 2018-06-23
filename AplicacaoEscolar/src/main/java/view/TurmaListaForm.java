@@ -50,7 +50,6 @@ public class TurmaListaForm extends javax.swing.JInternalFrame {
         panelOpcao = new javax.swing.JPanel();
         rBtnTodasTurmas = new javax.swing.JRadioButton();
         rBtnTurmasPCD = new javax.swing.JRadioButton();
-        rBtnTurmaSemPCD = new javax.swing.JRadioButton();
         panelOrdem = new javax.swing.JPanel();
         rBtnId = new javax.swing.JRadioButton();
         rBtnEnsino = new javax.swing.JRadioButton();
@@ -74,28 +73,24 @@ public class TurmaListaForm extends javax.swing.JInternalFrame {
         rBtnTodasTurmas.setText("Todas as Turmas");
 
         btnGroupOpcao.add(rBtnTurmasPCD);
-        rBtnTurmasPCD.setText("Com PCD");
-
-        btnGroupOpcao.add(rBtnTurmaSemPCD);
-        rBtnTurmaSemPCD.setText("Sem PCD");
+        rBtnTurmasPCD.setText("Turmas com PCD");
 
         javax.swing.GroupLayout panelOpcaoLayout = new javax.swing.GroupLayout(panelOpcao);
         panelOpcao.setLayout(panelOpcaoLayout);
         panelOpcaoLayout.setHorizontalGroup(
             panelOpcaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelOpcaoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rBtnTodasTurmas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(rBtnTurmasPCD)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rBtnTurmaSemPCD))
+                .addContainerGap())
         );
         panelOpcaoLayout.setVerticalGroup(
             panelOpcaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelOpcaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(rBtnTodasTurmas)
-                .addComponent(rBtnTurmasPCD)
-                .addComponent(rBtnTurmaSemPCD))
+                .addComponent(rBtnTurmasPCD))
         );
 
         panelOrdem.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Ordenar Tabela por:"));
@@ -159,8 +154,8 @@ public class TurmaListaForm extends javax.swing.JInternalFrame {
             panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMenuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelOpcao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(panelOpcao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelMenuLayout.createSequentialGroup()
                         .addComponent(panelOrdem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -243,8 +238,7 @@ public class TurmaListaForm extends javax.swing.JInternalFrame {
         try {
             //Opcoes de busca
             this.rBtnTodasTurmas.setActionCommand("todas");
-            this.rBtnTurmasPCD.setActionCommand("comPCD");
-            this.rBtnTurmaSemPCD.setActionCommand("semPCD");
+            this.rBtnTurmasPCD.setActionCommand("comPCD");  
             //Opcoes de ordenação
             this.rBtnId.setActionCommand("id");
             this.rBtnNome.setActionCommand("nome");
@@ -279,7 +273,6 @@ public class TurmaListaForm extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rBtnNome;
     private javax.swing.JRadioButton rBtnTodasTurmas;
     private javax.swing.JRadioButton rBtnTotalAlu;
-    private javax.swing.JRadioButton rBtnTurmaSemPCD;
     private javax.swing.JRadioButton rBtnTurmasPCD;
     private javax.swing.JTable tabelaListaTurmas;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
