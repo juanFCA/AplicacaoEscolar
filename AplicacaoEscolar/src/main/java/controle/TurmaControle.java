@@ -85,7 +85,7 @@ public class TurmaControle {
 
     public final void pesquisar() {
        turmasTabelas.clear();
-       turmasTabelas = turmaDao.listaTurmas();
+       turmasTabelas.addAll(turmaDao.listaTurmas());
     }
     
     public void addPropertyChangeListener(PropertyChangeListener e) {

@@ -85,7 +85,7 @@ public class AlunoControle {
 
     public final void pesquisar() {
        alunosTabelas.clear();
-       alunosTabelas = alunoDao.listaAlunos();
+       alunosTabelas.addAll(alunoDao.listaAlunos());
     }
     
     public void addPropertyChangeListener(PropertyChangeListener e) {
