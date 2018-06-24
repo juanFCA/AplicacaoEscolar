@@ -7,6 +7,7 @@ package view;
 
 import controle.TurmaControle;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import javassist.tools.rmi.RemoteException;
 import javax.swing.JOptionPane;
 import util.ValidacaoException;
@@ -163,6 +164,12 @@ public class TurmaCadForm extends javax.swing.JInternalFrame {
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaControle.turmaDigitada.ano}"), txtAno, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
+
+        txtAno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAnoKeyTyped(evt);
+            }
+        });
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaControle.turmaDigitada.ensino}"), cbEnsino, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
@@ -333,6 +340,18 @@ public class TurmaCadForm extends javax.swing.JInternalFrame {
         
         cbEnsino.setSelectedIndex(0);
     }//GEN-LAST:event_formInternalFrameOpened
+
+    private void txtAnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnoKeyTyped
+        // TODO add your handling code here:
+        int k = evt.getKeyChar();
+        if((k > 47 && k < 58)) {
+            if(txtAno.getText().length() == 3){ //quando tiver 4 digitos vai mudar o foco
+                txtNome.requestFocus();
+            }
+        } else {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+        }
+    }//GEN-LAST:event_txtAnoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

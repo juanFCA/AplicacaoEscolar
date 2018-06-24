@@ -9,6 +9,7 @@ import controle.AlunoControle;
 import controle.TurmaControle;
 import dominio.Turma;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javassist.tools.rmi.RemoteException;
 import javax.swing.JOptionPane;
@@ -65,12 +66,12 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         lblAnoNasc = new javax.swing.JLabel();
         lblTurma = new javax.swing.JLabel();
         txtMatricula = new javax.swing.JTextField();
-        txtAnoNasc = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         cbTurma = new javax.swing.JComboBox<>();
         panelPCD = new javax.swing.JPanel();
         rBtnSim = new javax.swing.JRadioButton();
         rBtnNao = new javax.swing.JRadioButton();
+        txtAnoNasc = new javax.swing.JTextField();
         panelScroll = new javax.swing.JScrollPane();
         tabelaAlunos = new javax.swing.JTable();
 
@@ -161,9 +162,6 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.id}"), txtMatricula, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.anoNasc}"), txtAnoNasc, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.nome}"), txtNome, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -180,7 +178,6 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         bindingGroup.addBinding(binding);
 
         btnGroupPCD.add(rBtnNao);
-        rBtnNao.setSelected(true);
         rBtnNao.setText("Não");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.PCD}"), rBtnNao, org.jdesktop.beansbinding.BeanProperty.create("selected"));
@@ -204,21 +201,22 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.anoNasc}"), txtAnoNasc, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        txtAnoNasc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAnoNascKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelDadosLayout = new javax.swing.GroupLayout(panelDados);
         panelDados.setLayout(panelDadosLayout);
         panelDadosLayout.setHorizontalGroup(
             panelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDadosLayout.createSequentialGroup()
-                        .addComponent(lblMatricula)
-                        .addGap(3, 3, 3)
-                        .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblAnoNasc)
-                        .addGap(1, 1, 1)
-                        .addComponent(txtAnoNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelDadosLayout.createSequentialGroup()
                         .addGroup(panelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelDadosLayout.createSequentialGroup()
@@ -230,8 +228,15 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
                                 .addGap(2, 2, 2)
                                 .addComponent(cbTurma, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelPCD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(panelPCD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelDadosLayout.createSequentialGroup()
+                        .addComponent(lblMatricula)
+                        .addGap(3, 3, 3)
+                        .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblAnoNasc)
+                        .addGap(2, 2, 2)
+                        .addComponent(txtAnoNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelDadosLayout.setVerticalGroup(
@@ -241,8 +246,8 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
                 .addGroup(panelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMatricula)
                     .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAnoNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAnoNasc))
+                    .addComponent(lblAnoNasc)
+                    .addComponent(txtAnoNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelDadosLayout.createSequentialGroup()
@@ -378,7 +383,21 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         } catch(Exception erro) {
             System.out.println(erro);
         }
+        
+        txtAnoNasc.setFocusable(true);
     }//GEN-LAST:event_formInternalFrameOpened
+
+    private void txtAnoNascKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnoNascKeyTyped
+        // TODO add your handling code here:
+        int k = evt.getKeyChar();
+        if((k > 47 && k < 58)) {
+            if(txtAnoNasc.getText().length() == 3){ //quando tiver 4 digitos vai mudar o foco
+                txtNome.requestFocus();
+            }
+        } else {
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+        }
+    }//GEN-LAST:event_txtAnoNascKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

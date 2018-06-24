@@ -131,16 +131,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblMatricula" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          <Component id="txtMatricula" min="-2" pref="65" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblAnoNasc" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          <Component id="txtAnoNasc" min="-2" pref="65" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
@@ -156,7 +147,15 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="panelPCD" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="lblMatricula" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                          <Component id="txtMatricula" min="-2" pref="65" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblAnoNasc" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <Component id="txtAnoNasc" min="-2" pref="65" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -170,8 +169,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtAnoNasc" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblAnoNasc" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtAnoNasc" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -220,13 +219,6 @@
           </Properties>
           <BindingProperties>
             <BindingProperty name="text" source="Form" sourcePath="${alunoControle.alunoDigitado.id}" target="txtMatricula" targetPath="text" updateStrategy="0" immediately="false">
-              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-            </BindingProperty>
-          </BindingProperties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtAnoNasc">
-          <BindingProperties>
-            <BindingProperty name="text" source="Form" sourcePath="${alunoControle.alunoDigitado.anoNasc}" target="txtAnoNasc" targetPath="text" updateStrategy="0" immediately="false">
               <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
             </BindingProperty>
           </BindingProperties>
@@ -304,7 +296,6 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="btnGroupPCD"/>
                 </Property>
-                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
               </Properties>
               <BindingProperties>
@@ -313,6 +304,16 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JTextField" name="txtAnoNasc">
+          <BindingProperties>
+            <BindingProperty name="text" source="Form" sourcePath="${alunoControle.alunoDigitado.anoNasc}" target="txtAnoNasc" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAnoNascKeyTyped"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JScrollPane" name="panelScroll">
