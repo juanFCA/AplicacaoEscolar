@@ -180,6 +180,7 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         bindingGroup.addBinding(binding);
 
         btnGroupPCD.add(rBtnNao);
+        rBtnNao.setSelected(true);
         rBtnNao.setText("Não");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.PCD}"), rBtnNao, org.jdesktop.beansbinding.BeanProperty.create("selected"));

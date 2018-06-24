@@ -23,6 +23,9 @@ public class RelatorioDao {
         this.em = Conexao.getEntityManager();
     }
      
+    public Aluno pesquisarAluno(Long id) {
+        return (Aluno) em.createQuery("select a from Aluno a where a.id = "+id).getSingleResult();
+    }
    
     public List<Aluno> listarAlunosTurma(String nomeTurma, String opcaoOrdem) {
         return em.createQuery("select a from Aluno a join a.turma t where t.nome like"+"'"+nomeTurma+"' order by a."+opcaoOrdem).getResultList();

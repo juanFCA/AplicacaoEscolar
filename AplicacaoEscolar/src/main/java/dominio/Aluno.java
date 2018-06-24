@@ -99,14 +99,23 @@ public class Aluno implements Serializable {
         return true;
     }
 
+    public String dadosAluno() {
+        return "Dados do Aluno:" 
+                + "\nMatrícula: " + id 
+                + "\nNome: " + nome 
+                + "\nAno de Nascimento: " + anoNasc 
+                + "\nPCD: " + ((PCD == 1) ? "Sim" : "Não") 
+                + "\nTurma: " + turma.getNome();
+    }
+
     @Override
     public String toString() {
-        return "dominio.Aluno[ id=" + id + " ]";
+        return "Aluno{" + "id=" + id + '}';
     }
     
     public void validar() throws ValidacaoException{
         if (this.nome == null || this.nome.equals("")) {
             throw new ValidacaoException("Campo nome precisa ser preenchido");
-        }
+        } 
     }
 }

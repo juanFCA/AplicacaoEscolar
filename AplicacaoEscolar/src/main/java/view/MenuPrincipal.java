@@ -5,6 +5,12 @@
  */
 package view;
 
+import java.awt.Container;
+import javassist.tools.rmi.RemoteException;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author juan
@@ -35,6 +41,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnOperacao = new javax.swing.JMenu();
         mnAluno = new javax.swing.JMenu();
         mniCadAluno = new javax.swing.JMenuItem();
+        mniRemover = new javax.swing.JMenuItem();
         mniListaAluTur = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnTurma = new javax.swing.JMenu();
@@ -73,6 +80,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         mnAluno.add(mniCadAluno);
+
+        mniRemover.setMnemonic('r');
+        mniRemover.setText("Remoção");
+        mniRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniRemoverActionPerformed(evt);
+            }
+        });
+        mnAluno.add(mniRemover);
 
         mniListaAluTur.setMnemonic('l');
         mniListaAluTur.setText("Lista de Alunos por Turma");
@@ -164,6 +180,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         turmaListaForm.setVisible(true);
     }//GEN-LAST:event_mniListaTurmaOOActionPerformed
 
+    private void mniRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniRemoverActionPerformed
+        // TODO add your handling code here:
+        RemocaoDialog remocaoDialog = new RemocaoDialog();
+        remocaoDialog.setLocationRelativeTo(this);
+        remocaoDialog.setVisible(true);
+    }//GEN-LAST:event_mniRemoverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -210,6 +233,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniCadAluno;
     private javax.swing.JMenuItem mniListaAluTur;
     private javax.swing.JMenuItem mniListaTurmaOO;
+    private javax.swing.JMenuItem mniRemover;
     private javax.swing.JMenuItem mniSair;
     private javax.swing.JDesktopPane panelDesktop;
     // End of variables declaration//GEN-END:variables
