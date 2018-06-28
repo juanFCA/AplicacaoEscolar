@@ -323,7 +323,18 @@ public class TurmaCadForm extends javax.swing.JInternalFrame {
                 "Remover Turma",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
-                turmaControle.remover();
+                if(turmaControle.getTurmaSelecionada().getTamanhoTurma() > 0){
+                    if(JOptionPane.showConfirmDialog(this, 
+                        "Deseja realmente remover esta Turma?\n\nEla contém "
+                        + turmaControle.getTurmaSelecionada().getTamanhoTurma()
+                        + " aluno(s) associado(s) a ela e \ntodos os seus dados também serão removidos!!\n\n",
+                        "Remover Turma",
+                        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                        
+                        turmaControle.remover();
+                } else {
+                    turmaControle.remover();
+                }
                 JOptionPane.showMessageDialog(this, 
                     "Turma removida com sucesso",
                     "Remover Turma",

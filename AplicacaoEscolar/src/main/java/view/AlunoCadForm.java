@@ -387,7 +387,10 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         try {
             List<Turma> lista = turmaControle.getTurmasTabelas();
             lista.stream().forEach((tur) -> {
-                cbTurma.addItem(tur.getNome());
+                //se o tamanho da turma é menor que 40 ela aparece para ser selecionada
+                if(tur.getTamanhoTurma() < 40) {
+                    cbTurma.addItem(tur.getNome());
+                }
             });
         } catch(Exception erro) {
             System.out.println(erro);

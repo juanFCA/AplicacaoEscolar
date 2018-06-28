@@ -10,6 +10,7 @@ import dominio.Aluno;
 import dominio.Turma;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -33,15 +34,21 @@ public class RelatorioDao {
     
     public List<Turma> listarTurmasOpcaoOrdem(String opcao, String ordem) {
         switch (opcao) {
-            case "comPCD":
+            case "comPCD": {
                 if(ordem.equals("alunos")) {
-                    return em.createQuery("select t from Turma t join t.alunos a where a.PCD = "+1+" order by t.getTamanhoTurma").getResultList();
+                    return em.createQuery("select t from Turma t join t.alunos a where a.PCD = "+1+" order by size(t.alunos)").getResultList();
                 }
                 else {
                     return em.createQuery("select t from Turma t join t.alunos a where a.PCD = "+1+" order by t."+ordem).getResultList();
                 }
-            default:
-                return em.createQuery("select t from Turma t order by "+ordem).getResultList();
+            }
+            default:{
+                if(ordem.equals("alunos")) {
+                    return em.createQuery("select t from Turma t order by size(t.alunos)").getResultList();
+                } else {
+                    return em.createQuery("select t from Turma t order by "+ordem).getResultList();
+                }
+            }
         }
     }
 }

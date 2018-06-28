@@ -8,6 +8,7 @@ package dominio;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,8 +37,8 @@ public class Turma implements Serializable {
     
     @Column
     private Long ano;
-    
-    @OneToMany(mappedBy = "turma")
+    //Removendo a turma também apagam-se os alunos
+    @OneToMany(mappedBy = "turma", orphanRemoval = true, cascade = CascadeType.PERSIST)
     @BatchSize(size=40) //Limitamos a turma para somente 40 alunos
     private Collection<Aluno> alunos = new ArrayList<>();
 

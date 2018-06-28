@@ -46,4 +46,5 @@ public class TurmaDao {
     public List<Turma> listaTurmas() {
         return em.createQuery("select t from Turma t order by id").getResultList();
     }
+    
 }
