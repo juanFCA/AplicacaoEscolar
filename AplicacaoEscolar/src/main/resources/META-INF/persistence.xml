@@ -5,7 +5,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> 
     Usar esse provider por algum motico o netBeans fica mudando do Hibernate para o eclipse
       -->
-    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> 
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <class>dominio.Aluno</class>
     <class>dominio.Turma</class>
     <properties>
@@ -15,6 +15,7 @@
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="admin"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>

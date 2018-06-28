@@ -178,6 +178,7 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         bindingGroup.addBinding(binding);
 
         btnGroupPCD.add(rBtnNao);
+        rBtnNao.setSelected(true);
         rBtnNao.setText("Não");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.PCD}"), rBtnNao, org.jdesktop.beansbinding.BeanProperty.create("selected"));
@@ -320,6 +321,7 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
         cbTurma.setSelectedIndex(0);
+        rBtnNao.setSelected(true);
         alunoControle.novo();
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -347,6 +349,7 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
                     JOptionPane.ERROR_MESSAGE);
         } 
         cbTurma.setSelectedIndex(0);
+        rBtnNao.setSelected(true);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
@@ -370,6 +373,7 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
             }        
         }
         cbTurma.setSelectedIndex(0);
+        rBtnNao.setSelected(true);
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
@@ -383,8 +387,6 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         } catch(Exception erro) {
             System.out.println(erro);
         }
-        
-        txtAnoNasc.setFocusable(true);
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void txtAnoNascKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnoNascKeyTyped

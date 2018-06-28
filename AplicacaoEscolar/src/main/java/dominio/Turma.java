@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import org.hibernate.annotations.BatchSize;
 import util.ValidacaoException;
 
 /**
@@ -37,6 +38,7 @@ public class Turma implements Serializable {
     private Long ano;
     
     @OneToMany(mappedBy = "turma")
+    @BatchSize(size=40) //Limitamos a turma para somente 40 alunos
     private Collection<Aluno> alunos = new ArrayList<>();
 
     public Long getId() {

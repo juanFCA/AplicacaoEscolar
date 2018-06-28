@@ -34,7 +34,12 @@ public class RelatorioDao {
     public List<Turma> listarTurmasOpcaoOrdem(String opcao, String ordem) {
         switch (opcao) {
             case "comPCD":
-                return em.createQuery("select t from Turma t join t.alunos a where a.PCD = "+1+" order by t."+ordem).getResultList();
+                if(ordem.equals("alunos")) {
+                    return em.createQuery("select t from Turma t join t.alunos a where a.PCD = "+1+" order by t.getTamanhoTurma").getResultList();
+                }
+                else {
+                    return em.createQuery("select t from Turma t join t.alunos a where a.PCD = "+1+" order by t."+ordem).getResultList();
+                }
             default:
                 return em.createQuery("select t from Turma t order by "+ordem).getResultList();
         }
