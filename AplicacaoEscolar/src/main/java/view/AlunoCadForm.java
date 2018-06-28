@@ -398,7 +398,7 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int k = evt.getKeyChar();
         if((k > 47 && k < 58)) {
-            if(txtAnoNasc.getText().length() == 3){ 
+            if(txtAnoNasc.getText().length() == 4){ 
                 //quando tiver 4 digitos consome os digitados a mais se usuárop tenta burlar
                 evt.consume();
                 //depois muda o foco

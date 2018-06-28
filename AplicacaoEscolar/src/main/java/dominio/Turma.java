@@ -121,5 +121,6 @@ public class Turma implements Serializable {
         if(this.ano.toString().length() != 4 || this.ano.toString().length() < 4) {
             throw new ValidacaoException("Campo ano precisa ter até 4 caracteres");
         }
+       
     }
 }
