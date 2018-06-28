@@ -162,6 +162,12 @@ public class TurmaCadForm extends javax.swing.JInternalFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaControle.turmaDigitada.nome}"), txtNome, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
+        txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeKeyTyped(evt);
+            }
+        });
+
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${turmaControle.turmaDigitada.ano}"), txtAno, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -345,13 +351,26 @@ public class TurmaCadForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int k = evt.getKeyChar();
         if((k > 47 && k < 58)) {
-            if(txtAno.getText().length() == 3){ //quando tiver 4 digitos vai mudar o foco
+            if(txtAno.getText().length() == 4){ 
+                //quando tiver 4 digitos consome os que digitarem a mais
+                evt.consume();
+                //quando tiver 4 digitos vai mudar o foco
                 txtNome.requestFocus();
             }
         } else {
             evt.setKeyChar((char)KeyEvent.VK_CLEAR);
         }
     }//GEN-LAST:event_txtAnoKeyTyped
+
+    private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
+        // TODO add your handling code here:
+        if(txtNome.getText().length() == 10) {
+            //quando tiver 10 digitos consome os que digitarem a mais
+            evt.consume();
+            //depois muda o foco
+            txtAno.requestFocus();
+        }
+    }//GEN-LAST:event_txtNomeKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

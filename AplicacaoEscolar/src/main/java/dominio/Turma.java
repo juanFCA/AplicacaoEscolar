@@ -111,12 +111,14 @@ public class Turma implements Serializable {
     }
 
     public void validar() throws ValidacaoException{
+        //Validação do nome se a validação por algum motivo não funcionar na tela
         if (this.nome == null || this.nome.equals("")) {
             throw new ValidacaoException("Campo nome precisa ser preenchido");
         } else if(this.nome.length() > 10) {
             throw new ValidacaoException("Campo nome precisa ter até 10 caracteres");
         }
-        if(this.ano.toString().length() != 4) {
+        //validação do campo ano se o da tela não funcionar
+        if(this.ano.toString().length() != 4 || this.ano.toString().length() < 4) {
             throw new ValidacaoException("Campo ano precisa ter até 4 caracteres");
         }
     }

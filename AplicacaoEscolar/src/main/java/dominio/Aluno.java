@@ -114,8 +114,16 @@ public class Aluno implements Serializable {
     }
     
     public void validar() throws ValidacaoException{
+        //Validação do nome se a validação por algum motivo não funcionar na tela
         if (this.nome == null || this.nome.equals("")) {
             throw new ValidacaoException("Campo nome precisa ser preenchido");
-        } 
+        }
+        //validação do campo ano se o da tela não funcionar
+        if(this.anoNasc.toString().length() != 4 || this.anoNasc.toString().length() < 4) {
+            throw new ValidacaoException("Campo ano de nascimento precisa ter até 4 caracteres");
+        }
+        if (this.turma == null) {
+            throw new ValidacaoException("Uma Turma deve ser selecionada");
+        }
     }
 }

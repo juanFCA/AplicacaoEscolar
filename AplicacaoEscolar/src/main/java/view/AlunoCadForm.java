@@ -165,6 +165,12 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.nome}"), txtNome, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
+        txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeKeyTyped(evt);
+            }
+        });
+
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.turma.nome}"), cbTurma, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
@@ -178,7 +184,6 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         bindingGroup.addBinding(binding);
 
         btnGroupPCD.add(rBtnNao);
-        rBtnNao.setSelected(true);
         rBtnNao.setText("Não");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${alunoControle.alunoDigitado.PCD}"), rBtnNao, org.jdesktop.beansbinding.BeanProperty.create("selected"));
@@ -393,13 +398,26 @@ public class AlunoCadForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int k = evt.getKeyChar();
         if((k > 47 && k < 58)) {
-            if(txtAnoNasc.getText().length() == 3){ //quando tiver 4 digitos vai mudar o foco
+            if(txtAnoNasc.getText().length() == 3){ 
+                //quando tiver 4 digitos consome os digitados a mais se usuárop tenta burlar
+                evt.consume();
+                //depois muda o foco
                 txtNome.requestFocus();
             }
         } else {
             evt.setKeyChar((char)KeyEvent.VK_CLEAR);
         }
     }//GEN-LAST:event_txtAnoNascKeyTyped
+
+    private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
+        // TODO add your handling code here:
+        if(txtNome.getText().length() == 255) {
+            //quando tiver 255 digitos consome os que digitarem a mais
+            evt.consume();
+            //depois muda o foco
+            cbTurma.requestFocus();
+        }
+    }//GEN-LAST:event_txtNomeKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
